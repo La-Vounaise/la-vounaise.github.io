@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Refuge la vounaise</title>
+	<link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css">
+	<style>
+		.text-danger {
+			color: red;
+		}
+
+		#errName {
+			display: none;
+		}
+
+		#errEmail {
+			display: none;
+		}
+
+		#errMessage {
+			display: none;
+		}
+
+		#errCaptcha {
+			display: none;
+		}
+
+		#errSendEmail {
+			display: none;
+		}
+
+		#errNoIdea {
+			display: none;
+		}
+
+		#emailOk {
+			display: none;
+		}
+	</style>
+</head>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcqCyQjAAAAABkKGwCaRFc4lSDeizG8dwFmTPdb" async defer></script>
+<body>
+    <!--NAVBAR-->
+    <nav>
+    <div class="container-fluid">
+    	<div id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        	<div class="navbar-header">
+                <a class="navbar-brand" href="index.html">La Vounaise</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                	<span class="sr-only">Toggle navigation</span>
+                	<span class="icon-bar"></span>
+                	<span class="icon-bar"></span>
+                	<span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-menubuilder">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tir.html">Tir</a></li>
+                    <li><a href="location.html">Location</a></li>
+                    <li><a href="quiSommesNous.html">Qui sommes-nous</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+    	<h1>Nous contacter</h1>
+    	<div class="backText">
+    		<p>Claude Schertenleib</p>
+    		<p>Téléphone : <a href="tel:+41 79 819 73 76">+41 79 819 73 76</a></p>
+			<p>Merci de prendre contact par téléphone seulement du lundi au vendredi, pendant les heures de bureau</p>
+			<p>Par contre, vous pouvez toujours nous envoyer un email</p>
+    	</div>
+    </div>
+
+	   <div class="container">
+	   	<h1>Par email</h1>
+		<form
+		  action="https://formspree.io/f/mldryykz"
+		  method="POST"
+		>
+		<div class="form-group">
+		  <label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="Prénom & Nom"/>
+						<div id="ack-name"></div>
+						<div class="alert alert-danger" id="errName" role="alert">Veuillez entrer votre prénom et votre nom.</div>
+		    Your email:
+		    <input type="email" name="email">
+		  </label>
+		</div>
+		<div class="form-group">
+			<label>
+			    Your message:
+				<textarea name="message"></textarea>
+			</label>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Prénom et Nom</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="name" name="name" placeholder="Prénom & Nom">
+				<div id="ack-name"></div>
+				<div class="alert alert-danger" id="errName" role="alert">Veuillez entrer votre prénom et votre nom.</div>
+			</div>
+		</div>
+
+		<!-- your other form fields go here -->
+		<button type="submit">Send</button>
+		</form>
+				
+		</div>
+
+	    <form class="form-horizontal" role="form" name="myForm" id="myForm" method="post" onSubmit="getToken(event)">
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">Prénom et Nom</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="name" name="name" placeholder="Prénom & Nom">
+					<div id="ack-name"></div>
+					<div class="alert alert-danger" id="errName" role="alert">Veuillez entrer votre prénom et votre nom.</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="email" name="email" placeholder="example@email.ch">
+					<div class="alert alert-danger" id="errEmail" role="alert">Veuillez entrer une adresse email valide.</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="message" class="col-sm-2 control-label">Message</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" rows="4" id="message" name="message"></textarea>
+					<div class="alert alert-danger" id="errMessage" role="alert">Veuillez entrez votre message.</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-2">
+					<input type="submit" value="Envoyer" class="btn btn-primary">
+				</div>
+			</div>
+			<div class="form-group">
+	        	<div class="col-sm-10 col-sm-offset-2">
+					<div id="errCaptcha" class="alert alert-danger" role="alert">Erreur avec le captcha, êtes-vous un robot 😶‍🌫️ ?!?</div>
+					<div id="errSendEmail" class="alert alert-danger" role="alert">Erreur lors de l'envoi. Réessayez plus tard svp</div>
+					<div id="errNoIdea" class="alert alert-danger" role="alert">Un problème est survenu, si le problème persiste veuillez contacter par téléphone svp</div>
+					<div id="emailOk" class="alert alert-success" role="alert">Merci ! Nous vous contacterons bientôt et après validation, l'agenda sera mis à jour <a href="location.html">ici</a></div>
+				</div>
+			</div>	
+		</form>
+	   </div>
+	<!---->
+	<!--<script>-->
+	<!---->
+	<!--	function getToken(token) {-->
+	<!--		event.preventDefault();-->
+	<!---->
+	<!--		grecaptcha.ready(function() {-->
+	<!--			grecaptcha.execute('6LcqCyQjAAAAABkKGwCaRFc4lSDeizG8dwFmTPdb', { action: 'submit' }).then(function(token) {-->
+	<!---->
+	<!--				var button = document.createElement('input');-->
+	<!--				button.type = 'hidden';-->
+	<!--				button.name = 'recaptcha_token';-->
+	<!--				button.id = 'recaptcha_token';-->
+	<!--				button.value = token;-->
+	<!---->
+	<!--				var form = document.getElementById("myForm");-->
+	<!--				form.appendChild(button);-->
+	<!---->
+	<!--				submitForm();-->
+	<!--			});-->
+	<!--		});-->
+	<!--	}-->
+	<!---->
+	<!---->
+	<!--	function submitForm() {-->
+	<!--		const form = document.getElementById('myForm');-->
+	<!--		const formData = new FormData(form);-->
+	<!--		var xhttp = new XMLHttpRequest();-->
+	<!--		xhttp.overrideMimeType("application/json");-->
+	<!--		xhttp.open('POST', 'form.html', true);-->
+	<!--		xhttp.send(formData);-->
+	<!--		xhttp.onreadystatechange = function() {-->
+	<!--			if (xhttp.readyState == 4 && xhttp.status == 200) {-->
+	<!--				var cleanResponse = xhttp.responseText.replaceAll('\\','');-->
+	<!--				var myResponse = JSON.parse(cleanResponse);-->
+	<!---->
+	<!--				prepareUi(myResponse);-->
+	<!--				document.getElementById('recaptcha_token').remove();-->
+	<!--			}-->
+	<!--		}-->
+	<!--	}-->
+	<!---->
+	<!--	function prepareUi(jsonResponse) {-->
+	<!--		document.getElementById("errName").style.display = "none";-->
+	<!--		document.getElementById("errEmail").style.display = "none";-->
+	<!--		document.getElementById("errMessage").style.display = "none";-->
+	<!--		document.getElementById("errCaptcha").style.display = "none";-->
+	<!--		document.getElementById("errSendEmail").style.display = "none";-->
+	<!--		document.getElementById("errNoIdea").style.display = "none";-->
+	<!--		document.getElementById("emailOk").style.display = "none";-->
+	<!---->
+	<!--		if (!jsonResponse.isDataValid){-->
+	<!--			if (jsonResponse.isErrName){-->
+	<!--				document.getElementById("errName").style.display = "block";-->
+	<!--			}-->
+	<!---->
+	<!--			if (jsonResponse.isErrEmail){-->
+	<!--				document.getElementById("errEmail").style.display = "block";-->
+	<!--			}-->
+	<!---->
+	<!--			if (jsonResponse.isErrMessage){-->
+	<!--				document.getElementById("errMessage").style.display = "block";-->
+	<!--			}-->
+	<!--		} else {-->
+	<!--			if (!jsonResponse.isEmailOk){-->
+	<!--				if (jsonResponse.isErrCaptcha) {-->
+	<!--					document.getElementById("errCaptcha").style.display = "block";-->
+	<!--				} else if (jsonResponse.isErrSendEmail) {-->
+	<!--					document.getElementById("errSendEmail").style.display = "block";-->
+	<!--				} else {-->
+	<!--					document.getElementById("errNoIdea").style.display = "block";-->
+	<!--				}-->
+	<!--			} else {-->
+	<!--				document.getElementById("emailOk").style.display = "block";-->
+	<!--			}-->
+	<!--		}-->
+	<!--	}-->
+	<!--</script>-->
+	<!---->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

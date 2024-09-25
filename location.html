@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Refuge la vounaise</title>
+	<link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css">
+	<style>
+    #map{
+	  display:block;
+      margin:auto;
+      max-width: 100%;
+      height: 400px;
+      margin-top: 2%;
+      box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+    }
+	.googleMapLogo{
+		max-height: 45px;
+	}
+  </style>
+  
+</head>
+<body>
+    <!--NAVBAR-->
+    <nav>
+    <div class="container-fluid">
+    	<div id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        	<div class="navbar-header">
+                <a class="navbar-brand" href="index.html">La Vounaise</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                	<span class="sr-only">Toggle navigation</span>
+                	<span class="icon-bar"></span>
+                	<span class="icon-bar"></span>
+                	<span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-menubuilder">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tir.html">Tir</a></li>
+                    <li><a href="location.html">Location</a></li>
+                    <li><a href="quiSommesNous.html">Qui sommes-nous</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>   
+    <!--CALENDRIER-->
+    <div class="container">
+    	<h1>Vérifiez si votre date est libre</h1>
+		<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23996633&amp;src=refugelavounaise%40gmail.com&amp;color=%236B3304&amp;ctz=Europe%2FZurich" style="border-width:0" width="100%" height="350" frameborder="0" scrolling="no"></iframe>
+	</div>
+
+	<div class="container">
+		<h1>Quelques infos utiles</h1>
+		<div class="backText">
+			<p>Interieur pouvant accueillir 35 personnes</br></p>
+			<p>Exterieur ouvert sur la forêt avec une place pour 70 personnes</p>
+			<p>Dortoir pour environs 20 personnes. <b>Le dortoir sera indisponible du 1er octobre 2024 au 31 mars 2025</b></p>
+			<p>Location : T&eacute;l. <a href="tel:+41 79 819 73 76">+41 79 819 73 76</a> ou <a href="http://refugelavounaise.ch/contact.html">ici</a></p>
+			<!--p>Dortoir : 2893 lits</br></p-->
+			<p>Tarifs de location : Pour 24h de 9h00 à 9h00, Fr. 200.– <i>(caution Fr. 250.–)</i></p>
+		</div>
+		<h2>Aménagement</h2>
+		<div class="backText">
+			<p>Electricit&eacute; -&nbsp; Fours - Plan de cuisson avec plaques vitrocéramique - R&eacute;frig&eacute;rateurs -&nbsp;Chemin&eacute;e&nbsp;avec bois (payant)-&nbsp; Chauffage - WC</p>
+			<p>Ext&eacute;rieur: Grande table sur terrasse pour 20 personnes et tables disponibles pour 50 personnes - Grand grill avec 2 grilles pour grillade et &eacute;quip&eacute; de broches tournantes verticales ou horizontales pour r&ocirc;tis, poulets ou cochon entier - Potence pour chaudron, table de ping-pong avec mat&eacute;riel n&eacute;cessaire et terrain de p&eacute;tanque (sans boules)</p>
+		</div>
+	</div>
+
+	<!--Google Maps-->
+	<div class="container">
+		<h1>Nous trouver</h1>
+		<p><i>lat: 46.807045, lng: 6.812687</i></p>
+		<a href="https://www.google.ch/maps/dir//46.807045,6.812687/@46.8070441,6.7426276,12z?ucbcb=1" target="_blank"><img src="styles/pictures/gMap_logo.png" class="googleMapLogo">  lien google map (cliquer ici)
+		<img class="img-fluid" id="map" src="styles/pictures/plan_laVounaise.png"></a>		
+  </div>
+  <script src="styles/js/bootstrap.min.js"></script>
+</body>
+</html>
